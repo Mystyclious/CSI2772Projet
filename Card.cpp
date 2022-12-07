@@ -1,110 +1,125 @@
 class Card{
+    
 	
 	public:
+	
+        
+		virtual int getCardsPerCoin(int coins) = 0;
 		
-		virtual int getCardsPerCoin(int coins){
-			
-		}
+		virtual string getName() = 0;
 		
-		virtual string getName(){
-		
-		}
-		
-		virtual void print(ostream& out){
-		
-		}
+		virtual void print(ostream& out){};
+
 };
 
+
 class Blue: public Card{
-	
+    
+	    
 	public:
 	
-	int getCardsPerCoin(int coins){
-		if(coins == 0){
-			return 0;
-		}
-		else if(coins == 1){
-			return 4;
-		}
-		else if(coins == 2){
-			return 6;
-		}
-		else if(coins == 3){
-			return 8;
-		}
-		else if(coins == 4){
-			return 10;
-		}
-	}
-	
-	string getName(){
-		return blue;
-	}
-	
-	virtual void print(ostream& out){
-		out.put("B");
-	}
+	        
+        int getCardsPerCoin(int coins){
+    		if(coins == 0){
+    			return 0;
+    		}
+    		else if(coins == 1){
+    			return 4;
+    		}
+    		else if(coins == 2){
+    			return 6;
+    		}
+    		else if(coins == 3){
+    			return 8;
+    		}
+    		else if(coins == 4){
+    			return 10;
+    		}
+    		else{
+    		    return 0;
+    		}		
+    	}
+    	
+    	string getName(){
+    		return "blue";
+    	}
+    	
+    	void print(ostream& out){
+    	    cout << "";
+    	}
 };
+
+
+
 
 class Chili: public Card{
 	
 	public:
 	
-	int getCardsPerCoin(int coins){
-		if(coins == 0){
-			return 0;
-		}
-		else if(coins == 1){
-			return 3;
-		}
-		else if(coins == 2){
-			return 6;
-		}
-		else if(coins == 3){
-			return 8;
-		}
-		else if(coins == 4){
-			return 9;
-		}
-	}
 	
-	string getName(){
-		return chili;
-	}
-	
-	virtual void print(ostream& out){
-		out.put("C");
-	}
+    	int getCardsPerCoin(int coins){
+    		if(coins == 0){
+    			return 0;
+    		}
+    		else if(coins == 1){
+    			return 3;
+    		}
+    		else if(coins == 2){
+    			return 6;
+    		}
+    		else if(coins == 3){
+    			return 8;
+    		}
+    		else if(coins == 4){
+    			return 9;
+    		}
+    		else{
+    		    return 0;
+    		}		
+    	}
+    	
+    	string getName(){
+    		return "Chili";
+    	}
+    	
+    	void print(ostream& out){
+            cout << "";
+    	}
 };
 
 class Stink: public Card{
 	
+	    
 	public:
 	
-	int getCardsPerCoin(int coins){
-		if(coins == 0){
-			return 0;
-		}
-		else if(coins == 1){
-			return 3;
-		}
-		else if(coins == 2){
-			return 5;
-		}
-		else if(coins == 3){
-			return 7;
-		}
-		else if(coins == 4){
-			return 8;
-		}
+	
+    	int getCardsPerCoin(int coins){
+    		if(coins == 0){
+    			return 0;
+    		}
+    		else if(coins == 1){
+    			return 3;
+    		}
+    		else if(coins == 2){
+    			return 5;
+    		}
+    		else if(coins == 3){
+    			return 7;
+    		}
+    		else if(coins == 4){
+    			return 8;
+    		}
+    		else{
+    		    return 0;
+    		}		
 	}
 	
 	string getName(){
-		return stink;
+		return "Stink";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("S");
+    void print(ostream& out){
+        cout << "";
 	}
 };
 
@@ -128,14 +143,17 @@ class Green: public Card{
 		else if(coins == 4){
 			return 7;
 		}
+		else{
+		    return 0;
+		}
 	}
 	
 	string getName(){
-		return green;
+		return "green";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("G");
+	void print(ostream& out){
+        cout << "";
 	}
 };
 
@@ -159,14 +177,17 @@ class soy: public Card{
 		else if(coins == 4){
 			return 7;
 		}
+		else{
+		    return 0;
+		}
 	}
 	
 	string getName(){
-		return soy;
+		return "soy";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("s");
+	void print(ostream& out){
+        cout << "";
 	}
 };
 
@@ -190,14 +211,17 @@ class black: public Card{
 		else if(coins == 4){
 			return 6;
 		}
+		else{
+		    return 0;
+		}		
 	}
 	
 	string getName(){
-		return black;
+		return "black";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("b");
+	void print(ostream& out){
+        cout << "";
 	}
 };
 
@@ -221,14 +245,17 @@ class Red: public Card{
 		else if(coins == 4){
 			return 5;
 		}
+		else{
+		    return 0;
+		}		
 	}
 	
 	string getName(){
-		return Red;
+		return "Red";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("R");
+	void print(ostream& out){
+        cout << "";
 	}
 };
 
@@ -246,13 +273,16 @@ class garden: public Card{
 		else if(coins == 3){
 			return 3;
 		}
+		else{
+		    return 0;
+		}		
 	}
 	
 	string getName(){
-		return garden;
+		return "garden";
 	}
 	
-	virtual void print(ostream& out){
-		out.put("g");
+	void print(ostream& out){
+        cout << "";
 	}
 };

@@ -17,16 +17,6 @@ class Table{
     CardFactory* cf;
     
     public:
-        /**
-         * @brief Construct a new Table object
-         * 
-         * @param p_one 
-         * @param p_two 
-         * @param d_pile 
-         * @param tr_arr 
-         * @param dck 
-         * @param cfactory 
-         */
         Table(Player& p_one, Player& p_two, DiscardPile& d_pile, TradeArea& tr_arr, Deck& dck, CardFactory& cfactory){
             p1 = &p_one;
             p2 = &p_two;
@@ -36,10 +26,6 @@ class Table{
             cf = &cfactory;
         }
 
-        /**
-         * @brief Destroy the Table object
-         * 
-         */
         ~Table(){
             delete p1;
             delete p2;

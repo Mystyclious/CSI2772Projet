@@ -11,18 +11,9 @@ class CardFactory;
 
 class DiscardPile:  public std::vector<Card*>{
     public:
-        /**
-         * @brief Construct a new Discard Pile object
-         * 
-         */
+
         DiscardPile(): std::vector<Card*>(){};
 
-        /**
-         * @brief Construct a new Discard Pile object from an istream
-         * 
-         * @param input 
-         * @param cf 
-         */
         DiscardPile(std::istream& input, const CardFactory* cf): std::vector<Card*>(){
             std::string line;
             Card* card = nullptr;
@@ -34,7 +25,6 @@ class DiscardPile:  public std::vector<Card*>{
                 if (!(iss >> data)) { 
                     continue;
                 } 
-                // std::cout << data << std::endl; //debug purpose
                 count++;
                 if(data == "B")       card = new Blue;
                 else if(data == "C")  card = new Chili;
@@ -48,7 +38,6 @@ class DiscardPile:  public std::vector<Card*>{
                     std::cout << "(DiscardPile Constructor) Check the card name in the file. Value received : " << data << std::endl;
                     exit(1);
                 }
-                //
                 if(card != nullptr) this->push_back(card);
 
             }
@@ -57,12 +46,6 @@ class DiscardPile:  public std::vector<Card*>{
 
         };
 
-        /**
-         * @brief add a card inside the discard pile using the operator +=
-         * 
-         * @param c 
-         * @return DiscardPile& 
-         */
         DiscardPile& operator+=(Card* c){
             this->push_back(c);
             return *this;

@@ -1,26 +1,18 @@
 #include "headers/Table.h"
 
 
-/**
- * @brief returns true when a player has won. The name of the player is 
-returned by reference (in the argument). 
- * 
- * @param pName 
- * @return true 
- * @return false 
- */
-bool Table::win(std::string& pName){
+bool Table::win(std::string& playerName){
     bool win = false;
     if(deck->size() == 0){
       
        if(p1->getNumCoins() > p2->getNumCoins()){
-           pName = p1->getName();
+           playerName = p1->getName();
        }
        else if(p1 ->getNumCoins() < p2->getNumCoins()){
-           pName = p2->getName();
+           playerName = p2->getName();
        }
        else{ //  equality
-           pName = "Equality";
+           playerName = "Equality";
        }
 
        win = true;
@@ -28,37 +20,18 @@ bool Table::win(std::string& pName){
     return win;
 }
 
-/**
- * @brief  prints the top card of the player's hand (with argument false) or all 
-of the player's hand (with argument true).
- * 
- * @param in 
- */
 void Table::printHand(bool in){
      Player* current = currentPlayer == 0 ? p1 : p2; // get the current player
      current -> printHand(std::cout, in);
 }
 
-/**
- * @brief return the p1 when p_id = 0 and p2 when the p_id is something else
- * 
- * @param id 
- * @return Player* 
- */
+
 Player* Table::getPlayer(int id){
     currentPlayer = id;
     if (id==0) return p1;
     else return p2;
 }
 
-
-/**
- * @brief insertion operator to display the table information
- * 
- * @param output 
- * @param tb 
- * @return std::ostream 
- */
 std::ostream& operator<<( std::ostream& output,  const Table&  tb){
 
     output << "> Player 1 : " << std::endl << std::endl << *(tb.p1) << std::endl;
@@ -70,11 +43,6 @@ std::ostream& operator<<( std::ostream& output,  const Table&  tb){
 };
 
 
-/**
- * 
- * @brief write the game into the related files
- * 
- */
 void Table::saveTable(){
     
     std::ofstream file;
@@ -97,12 +65,6 @@ void Table::saveTable(){
 
 }
 
-
-/**
- * @brief permet de recuperer l'information dans le fichier correspondant à l'id du joueur correspondant
- * 
- * @param p_id 
- */
 void Table::reloadPlayer(int p_id){
     std::ifstream file;
     char id[2];
@@ -121,60 +83,37 @@ void Table::reloadPlayer(int p_id){
     
 }
 
-/**
- * @brief permet de recuperer le deck sauvegardé dans un fichier
- * 
- * 
- */
 void Table::reloadDeck(){
-    std::ifstream deckFile("Saved-Deck.txt"); // add this in table ?
+    std::ifstream deckFile("Saved-Deck.txt"); 
     if(deckFile.is_open()){
         deck = new Deck(deckFile,cf);
     }else{
-        // file not found
         deck =  cf -> getDeck();
         std::cout << "Saved-Deck.txt not found. The deck has been generated from the CardFactory." << std::endl;
     }
 }
 
-/**
- * @brief reloads the discard pile from the saved file
- * 
- */
 void Table::reloadDiscardPile(){
-    std::ifstream dpFile("Saved-DiscardPile.txt"); // add this in table ?
+    std::ifstream dpFile("Saved-DiscardPile.txt"); 
     if(dpFile.is_open()){
         dp = new DiscardPile(dpFile,cf);
     }else{
-        // file not found
+
         dp =  new DiscardPile;
         std::cout << "Saved-DiscardPile.txt not found. Using empty discard pile." << std::endl;
     }
 }
 
-
-/**
- * @brief reloads the trade area from the saved file
- * 
- */
 void Table::reloadTradeArea(){
-    std::ifstream trArFile("Saved-TradeArea.txt"); // add this in table ?
+    std::ifstream trArFile("Saved-TradeArea.txt");
     if(trArFile.is_open()){
         tradeAr = new TradeArea(trArFile,cf);
     }else{
-        // file not found
         tradeAr =  new TradeArea;
         std::cout << "Saved-TradeArea.txt not found. Using empty trade area." << std::endl;
     }
 }
 
-
-
-/**
- * @brief returns the deck initialized in the table object
- * 
- * @return Deck* 
- */
 Deck* Table::getDeck(){
     if(deck == nullptr){
         deck =  cf -> getDeck();
@@ -182,22 +121,10 @@ Deck* Table::getDeck(){
     return deck;
 }
 
-
-/**
- * @brief returns the discard pile of the table
- * 
- * @return DiscardPile* 
- */
 DiscardPile* Table::getDiscardPile(){
     return dp;
 }
 
-
-/**
- * @brief returns the trade area of table
- * 
- * @return TradeArea* 
- */
 TradeArea* Table::getTradeArea(){
     return tradeAr;
 }

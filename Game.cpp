@@ -22,6 +22,8 @@ int main(){
 	Deck deck = cards.getDeck();
 	Hand handPlayer1(name1);
 	Hand handPlayer2(name2);
+	Table table;
+	TradeArea tradeAR;
 	
 	int i = 0;
 	
@@ -31,6 +33,28 @@ int main(){
 		cardDraw = deck.draw();
 		handPlayer2.operator += cardDrawn;
 	}
+	while(!deck.isEmpty()){
+		
+		table.operator("",table);
+		handPlayer1.operator += deck.draw();
+		if(tradeAR.numCards() != 0){
+			
+			string cardName;
+			Card* t_aCard;
+			cout << tradeAR.operator("", tradeAR) << endl;
+			cout << "Select a card from Trade Area" << endl;
+			cin >> cardName;
+			t_aCard = tradeAR.trade(cardName);
+			
+			int selected;
+			cout << "Select 1 to add to a chain" << endl;
+			cout << "Select 2 to discard" << endl;
+			cin >> selected;
+			if(selected == 1){
+				
+				
+			
+	
 	
 }
 	
